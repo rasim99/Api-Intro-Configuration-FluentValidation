@@ -7,7 +7,11 @@
          public double SalePrice { get; set; }
          public double CostPrice { get; set; }
          public bool IsDeleted { get; set; }
-          //public DateTime CreatedDate { get; set; }
+
+         public int? CategoryId { get; set; }
+         public Category Category { get; set; }
+
+        //public DateTime CreatedDate { get; set; }
 
     }
 }
