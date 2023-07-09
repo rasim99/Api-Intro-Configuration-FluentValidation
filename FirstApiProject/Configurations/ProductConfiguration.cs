@@ -14,4 +14,5 @@ namespace FirstApiProject.Configurations
            // builder.Property(p => p.CreatedDate).HasDefaultValueSql("getutcdate()");
         }
     }
+    
 }
