@@ -1,5 +1,6 @@
 using FirstApiProject.DAL;
 using FirstApiProject.Dtos.Product;
+using FirstApiProject.Profiles;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
 });
+//automapper
+builder.Services.AddAutoMapper(options =>
+{
+    options.AddProfile<MapProfile>();
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

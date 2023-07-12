@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\API\\FirstApiProject\\FirstApiProject\\wwwroot\\shop-category-img-4.jpg",
+      "PackagePath": "staticwebassets\\shop-category-img-4.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.FirstApiProject.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.FirstApiProject.props",
+      "PackagePath": "build\\FirstApiProject.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.FirstApiProject.props",
+      "PackagePath": "buildMultiTargeting\\FirstApiProject.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.FirstApiProject.props",
+      "PackagePath": "buildTransitive\\FirstApiProject.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

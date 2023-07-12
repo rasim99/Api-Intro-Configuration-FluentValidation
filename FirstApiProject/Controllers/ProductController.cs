@@ -1,4 +1,5 @@
-﻿using FirstApiProject.DAL;
+﻿using AutoMapper;
+using FirstApiProject.DAL;
 using FirstApiProject.Dtos.Product;
 using FirstApiProject.Models;
 using Microsoft.AspNetCore.Http;
@@ -12,10 +13,12 @@ namespace FirstApiProject.Controllers
     public class ProductController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
+        private readonly IMapper _mapper;
 
-        public ProductController(AppDbContext appDbContext)
+        public ProductController(AppDbContext appDbContext, IMapper mapper)
         {
             _appDbContext = appDbContext;
+            _mapper = mapper;
         }
 
         [Route("{id}")]
@@ -27,19 +30,21 @@ namespace FirstApiProject.Controllers
                 .ThenInclude(p=>p.Products)
                 .FirstOrDefault(p => p.Id == id &&!p.IsDeleted);
             if (product == null) return NotFound();
-            var returnProduct = new ProductReturnDto
-            {
-                Name = product.Name,
-                SalePrice = product.SalePrice,
-                CostPrice = product.CostPrice,
-                IsDeleted = product.IsDeleted,
-                Category =new CategoryInProductReturnDto
-                {
-                     Name=product.Category.Name,
-                      ImageUrl=product.Category.ImageUrl,
-                       ProductCount=product.Category.Products.Count
-                }
-            };
+            var returnProduct = _mapper.Map<ProductReturnDto>(product);
+            //var returnProduct = new ProductReturnDto
+            //{
+            //    Name = product.Name,
+            //    SalePrice = product.SalePrice,
+            //    CostPrice = product.CostPrice,
+            //    IsDeleted = product.IsDeleted,
+            //    Profit = product.SalePrice-product.CostPrice,
+            //    Category =new CategoryInProductReturnDto
+            //    {
+            //         Name=product.Category.Name,
+            //          ImageUrl=product.Category.ImageUrl,
+            //           ProductCount=product.Category.Products.Count
+            //    }
+            //};
             return StatusCode(200, returnProduct);
         }
 

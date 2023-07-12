@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CcUCP6DALgGE15XGWr5y3D4ojTgvLvE+yUvf3FmsnyU=",
+  "Hash": "0Maj7xUXLfDKSEucjyamOUjmYY/V5wp1OQiM+ac0u9k=",
   "Source": "FirstApiProject",
   "BasePath": "_content/FirstApiProject",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\BACKEND\\API\\FirstApiProject\\FirstApiProject\\wwwroot\\shop-category-img-4.jpg",
+      "SourceId": "FirstApiProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\BACKEND\\API\\FirstApiProject\\FirstApiProject\\wwwroot\\",
+      "BasePath": "_content/FirstApiProject",
+      "RelativePath": "shop-category-img-4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\shop-category-img-4.jpg"
+    }
+  ]
 }
