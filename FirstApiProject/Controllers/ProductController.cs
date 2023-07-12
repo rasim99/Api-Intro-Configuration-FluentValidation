@@ -3,6 +3,7 @@ using FirstApiProject.Dtos.Product;
 using FirstApiProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FirstApiProject.Controllers
 {
@@ -21,14 +22,23 @@ namespace FirstApiProject.Controllers
         [HttpGet]
         public IActionResult Get(int id)
         {
-            var product = _appDbContext.Products.FirstOrDefault(p => p.Id == id &&!p.IsDeleted);
+            var product = _appDbContext.Products
+                .Include(p=>p.Category)
+                .ThenInclude(p=>p.Products)
+                .FirstOrDefault(p => p.Id == id &&!p.IsDeleted);
             if (product == null) return NotFound();
             var returnProduct = new ProductReturnDto
             {
                 Name = product.Name,
                 SalePrice = product.SalePrice,
                 CostPrice = product.CostPrice,
-                IsDeleted = product.IsDeleted
+                IsDeleted = product.IsDeleted,
+                Category =new CategoryInProductReturnDto
+                {
+                     Name=product.Category.Name,
+                      ImageUrl=product.Category.ImageUrl,
+                       ProductCount=product.Category.Products.Count
+                }
             };
             return StatusCode(200, returnProduct);
         }
@@ -69,6 +79,7 @@ namespace FirstApiProject.Controllers
             newProduct.Name = product.Name;
             newProduct.SalePrice = product.SalePrice;
             newProduct.CostPrice = product.CostPrice;
+            newProduct.CategoryId = product.CategoryId;
             _appDbContext.Products.Add(newProduct);
             _appDbContext.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
@@ -81,6 +92,7 @@ namespace FirstApiProject.Controllers
             existproduct.Name = product.Name;
             existproduct.SalePrice = product.SalePrice;
             existproduct.CostPrice = product.CostPrice;
+            existproduct.CategoryId = product.CategoryId;
             _appDbContext.SaveChanges();
             return NoContent();
         }

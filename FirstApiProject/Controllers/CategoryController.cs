@@ -43,13 +43,13 @@ namespace FirstApiProject.Controllers
             return NoContent();
         }
         [HttpPost]
-        public IActionResult Create(CategoryCreateDto category)
+        public IActionResult Create([FromForm]CategoryCreateDto category)
         {
             if (_appDbContext.Categories.Any(c => c.Name.ToLower() == category.Name.ToLower()))
             {
                 return BadRequest();
             }
-            _appDbContext.Categories.Add(new Category { Name=category.Name});
+            _appDbContext.Categories.Add(new Category { Name=category.Name ,ImageUrl=category.File.FileName});
             _appDbContext.SaveChanges();
             return StatusCode(201);
         }

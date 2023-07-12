@@ -65,3 +65,4 @@ C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6
 C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\FirstApiProject.staticwebassets.runtime.json

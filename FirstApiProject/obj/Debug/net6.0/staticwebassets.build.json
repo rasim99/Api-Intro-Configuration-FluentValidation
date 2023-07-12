@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "QRX/eIKf+AZWcK5YCgUEzg/LSPwGRRcPoCT0QYef3dc=",
+  "Hash": "CcUCP6DALgGE15XGWr5y3D4ojTgvLvE+yUvf3FmsnyU=",
   "Source": "FirstApiProject",
   "BasePath": "_content/FirstApiProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FirstApiProject\\wwwroot",
+      "Source": "FirstApiProject",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\BACKEND\\API\\FirstApiProject\\FirstApiProject\\wwwroot\\",
+      "BasePath": "_content/FirstApiProject",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
