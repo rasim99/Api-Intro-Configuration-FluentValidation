@@ -68,3 +68,4 @@ C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6
 C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\FirstApiProject.staticwebassets.runtime.json
 C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ASUS\Desktop\BACKEND\API\FirstApiProject\FirstApiProject\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

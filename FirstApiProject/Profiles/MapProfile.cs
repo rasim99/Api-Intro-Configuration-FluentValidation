@@ -15,10 +15,10 @@ namespace FirstApiProject.Profiles
                 .ForMember(ds => ds.ImageUrl, map => map.MapFrom(sr => "https://localhost:7278/" +sr.ImageUrl));
             
             CreateMap<Category, CategoryInProductReturnDto>();
-            CreateMap<Product, ProductReturnDto>();
+            CreateMap<Product, ProductReturnDto>()
+                .ForMember(ds => ds.Profit, map => map.MapFrom(s => s.SalePrice - s.CostPrice));
 
-            CreateMap<User, UserReturnDto>()
-                .ForMember(ds => ds.Age, map => map.MapFrom(s => s.BirthDayDate.DateToAge()));
+            
         }
     }
 }
