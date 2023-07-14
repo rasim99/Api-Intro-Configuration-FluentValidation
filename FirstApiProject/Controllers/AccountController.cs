@@ -3,6 +3,10 @@ using FirstApiProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace FirstApiProject.Controllers
 {
@@ -12,13 +16,15 @@ namespace FirstApiProject.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IConfiguration _config;
 
-        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration config)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _config = config;
         }
-        
+
         [Route("register")]
         [HttpPost]
         public async Task<IActionResult>Register(RegisterDto registerDto)
@@ -69,7 +75,30 @@ namespace FirstApiProject.Controllers
             {
                 return NotFound();
             }
-            return Ok(new { token = "", message = "Succeeded" });
+
+            //generate token
+
+            var userRoles=await _userManager.GetRolesAsync(user);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenKey = Encoding.UTF8.GetBytes(_config["JWT:Key"]);
+            var claimList=new List<Claim>();
+            claimList.Add(new Claim(ClaimTypes.NameIdentifier,user.Id));    
+            claimList.Add(new Claim(ClaimTypes.Name, user.UserName));    
+            claimList.Add(new Claim(ClaimTypes.Email, user.Email));    
+            claimList.Add(new Claim("role", userRoles[0]));
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claimList),
+                Expires = DateTime.UtcNow.AddMinutes(10),
+                Issuer = _config["JWT:Issuer"],
+                Audience = _config["JWT:Audience"],
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            
+
+
+            return Ok(new { token =  tokenHandler.WriteToken(token), message = "Succeeded" });
         }
     }
 }

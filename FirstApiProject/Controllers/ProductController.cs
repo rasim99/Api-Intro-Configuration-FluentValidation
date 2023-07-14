@@ -2,6 +2,7 @@
 using FirstApiProject.DAL;
 using FirstApiProject.Dtos.Product;
 using FirstApiProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +50,7 @@ namespace FirstApiProject.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public IActionResult GetAll()
         {
             var query = _appDbContext.Products.Where(p => !p.IsDeleted);
